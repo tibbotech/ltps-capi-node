@@ -5,7 +5,6 @@
 
 		"sources": [ "humidity_wrap.cxx", 
 			"../../ltps-capi/src/tibbits/i2c/humidity.cpp",
-			"../../ltps-capi/src/utilities.cpp",
 			"../../ltps-capi/src/drivers/ci2c.cpp",
 			"../../ltps-capi/src/drivers/ci2c_smbus.cpp" ],
 
