@@ -4,6 +4,7 @@
 		"target_name": "ltps_humidity",
 
 		"sources": [ "humidity_wrap.cxx", 
+			"../../ltps-capi/src/lutils.cpp",
 			"../../ltps-capi/src/tibbits/i2c/humidity.cpp",
 			"../../ltps-capi/src/drivers/ci2c.cpp",
 			"../../ltps-capi/src/drivers/ci2c_smbus.cpp" ],

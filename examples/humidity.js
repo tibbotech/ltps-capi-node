@@ -1,6 +1,9 @@
 var lib = require("../libs/ltps_humidity");
+
+var data = new lib.Hih6130();
 var hum = new lib.Humidity();
-var data = hum.getData(4);
+
+hum.getData("-s01", data);
 
 console.log("RH: %d%", data.humidity);
 console.log("Temperature: %d degrees Celsius", data.temperature);
