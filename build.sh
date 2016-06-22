@@ -8,3 +8,8 @@ fi;
 cd ./humidity
 ./build.sh $1
 
+cd ../adc
+./build.sh $1
+
+cd ../dac
+./build.sh $1

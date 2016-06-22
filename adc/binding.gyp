@@ -1,10 +1,10 @@
 {
 	"targets": [
     {
-		"target_name": "ltps_humidity",
+		"target_name": "ltps_adc",
 
-		"sources": [ "humidity_wrap.cxx", 
-			"../../ltps-capi/src/tibbits/i2c/humidity.cpp",
+		"sources": [ "adc_wrap.cxx", 
+			"../../ltps-capi/src/tibbits/i2c/adc.cpp",
 			"../../ltps-capi/src/lutils.cpp",
 			"../../ltps-capi/src/drivers/ci2c.cpp",
 			"../../ltps-capi/src/drivers/ci2c_smbus.cpp" ],
