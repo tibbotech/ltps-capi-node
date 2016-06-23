@@ -16,3 +16,6 @@ cd ../dac
 
 cd ../pic
 ./build.sh $1
+
+cd ../accelerometer
+./build.sh $1
