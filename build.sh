@@ -13,3 +13,6 @@ cd ../adc
 
 cd ../dac
 ./build.sh $1
+
+cd ../pic
+./build.sh $1
