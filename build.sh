@@ -5,16 +5,19 @@ if [ $# -lt 1 ]; then
 	exit 1;
 fi;
 
-cd ./humidity
-./build.sh $1
-
-cd ../adc
+cd ./adc
 ./build.sh $1
 
 cd ../dac
 ./build.sh $1
 
 cd ../pic
+./build.sh $1
+
+cd ../light
+./build.sh $1
+
+cd ../humidity
 ./build.sh $1
 
 cd ../accelerometer
