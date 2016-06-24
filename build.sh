@@ -17,8 +17,20 @@ cd ../pic
 cd ../light
 ./build.sh $1
 
+cd ../temperature
+./build.sh $1
+
 cd ../humidity
 ./build.sh $1
 
+cd ../pressure
+./build.sh $1
+
 cd ../accelerometer
+./build.sh $1
+
+cd ../potentiometer
+./build.sh $1
+
+cd ../portextender
 ./build.sh $1
