@@ -34,3 +34,6 @@ cd ../potentiometer
 
 cd ../portextender
 ./build.sh $1
+
+cd ../agpio
+./build.sh $1

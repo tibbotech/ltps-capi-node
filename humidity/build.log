@@ -1,0 +1,41 @@
+[vitaliy@vitaliy-pc humidity]$ node-gyp clean configure build --arch=arm
+gyp info it worked if it ends with ok
+gyp info using node-gyp@3.3.1
+gyp info using node@5.9.1 | linux | x64
+gyp WARN download NVM_NODEJS_ORG_MIRROR is deprecated and will be removed in node-gyp v4, please use NODEJS_ORG_MIRROR
+gyp WARN download NVM_NODEJS_ORG_MIRROR is deprecated and will be removed in node-gyp v4, please use NODEJS_ORG_MIRROR
+gyp info spawn /opt/tps/sysroots/i686-tpssdk-linux/usr/bin/python2
+gyp info spawn args [ '/home/vitaliy/.nvm/v5.9.1/lib/node_modules/node-gyp/gyp/gyp_main.py',
+gyp info spawn args   'binding.gyp',
+gyp info spawn args   '-f',
+gyp info spawn args   'make',
+gyp info spawn args   '-I',
+gyp info spawn args   '/home/vitaliy/src/ltps-capi-node/humidity/build/config.gypi',
+gyp info spawn args   '-I',
+gyp info spawn args   '/home/vitaliy/.nvm/v5.9.1/lib/node_modules/node-gyp/addon.gypi',
+gyp info spawn args   '-I',
+gyp info spawn args   '/home/vitaliy/.node-gyp/5.9.1/include/node/common.gypi',
+gyp info spawn args   '-Dlibrary=shared_library',
+gyp info spawn args   '-Dvisibility=default',
+gyp info spawn args   '-Dnode_root_dir=/home/vitaliy/.node-gyp/5.9.1',
+gyp info spawn args   '-Dnode_gyp_dir=/home/vitaliy/.nvm/v5.9.1/lib/node_modules/node-gyp',
+gyp info spawn args   '-Dnode_lib_file=node.lib',
+gyp info spawn args   '-Dmodule_root_dir=/home/vitaliy/src/ltps-capi-node/humidity',
+gyp info spawn args   '--depth=.',
+gyp info spawn args   '--no-parallel',
+gyp info spawn args   '--generator-output',
+gyp info spawn args   'build',
+gyp info spawn args   '-Goutput_dir=.' ]
+gyp WARN download NVM_NODEJS_ORG_MIRROR is deprecated and will be removed in node-gyp v4, please use NODEJS_ORG_MIRROR
+gyp info spawn make
+gyp info spawn args [ 'BUILDTYPE=Release', '-C', 'build' ]
+make: вход в каталог «/home/vitaliy/src/ltps-capi-node/humidity/build»
+  CXX(target) Release/obj.target/ltps_humidity/humidity_wrap.o
+  CXX(target) Release/obj.target/ltps_humidity/../../ltps-capi/src/tibbits/i2c/humidity.o
+  CXX(target) Release/obj.target/ltps_humidity/../../ltps-capi/src/lutils.o
+  CXX(target) Release/obj.target/ltps_humidity/../../ltps-capi/src/drivers/ci2c.o
+  CXX(target) Release/obj.target/ltps_humidity/../../ltps-capi/src/drivers/ci2c_smbus.o
+  SOLINK_MODULE(target) Release/obj.target/ltps_humidity.node
+  COPY Release/ltps_humidity.node
+make: выход из каталога «/home/vitaliy/src/ltps-capi-node/humidity/build»
+gyp info ok
