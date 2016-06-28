@@ -1,4 +1,4 @@
-var lib = require("../libs/ltps_dac");
+var lib = require("../libs/ltps_dac.node");
 
 var dac = new lib.Dac();
 

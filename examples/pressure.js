@@ -1,4 +1,4 @@
-var lib = require("../libs/ltps_pressure");
+var lib = require("../libs/ltps_pressure.node");
 
 var data = new lib.PresData();
 var pres = new lib.Pressure();

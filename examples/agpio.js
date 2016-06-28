@@ -1,4 +1,4 @@
-var addon = require('../libs/ltps_agpio').GpioAsync,
+var addon = require('../libs/ltps_agpio.node').GpioAsync,
     events = require('events');
 
 inherits(addon, events);

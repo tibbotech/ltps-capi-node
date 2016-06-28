@@ -1,4 +1,4 @@
-var lib = require("../libs/ltps_humidity");
+var lib = require("../libs/ltps_humidity.node");
 
 var data = new lib.HumData();
 var hum = new lib.Humidity();

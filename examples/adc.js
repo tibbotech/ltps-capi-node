@@ -1,4 +1,4 @@
-var lib = require("../libs/ltps_adc");
+var lib = require("../libs/ltps_adc.node");
 
 var adc = new lib.Adc();
 

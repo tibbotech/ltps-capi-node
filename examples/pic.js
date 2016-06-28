@@ -1,5 +1,5 @@
 var sleep = require('sleep'); // https://www.npmjs.com/package/sleep
-var lib = require("../libs/ltps_pic");
+var lib = require("../libs/ltps_pic.node");
 
 var pic = new lib.Pic();
 pic.initPic("s1", 32); // 32 MHz, 16 MHz or 8 MHz

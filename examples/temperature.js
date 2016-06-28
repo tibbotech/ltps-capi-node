@@ -1,4 +1,4 @@
-var lib = require("../libs/ltps_temperature");
+var lib = require("../libs/ltps_temperature.node");
 
 var temp = new lib.Temperature();
 

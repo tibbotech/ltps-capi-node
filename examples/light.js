@@ -1,4 +1,4 @@
-var lib = require("../libs/ltps_light");
+var lib = require("../libs/ltps_light.node");
 
 var light = new lib.Light();
 

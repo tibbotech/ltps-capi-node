@@ -1,4 +1,4 @@
-var lib = require("../libs/ltps_accelerometer");
+var lib = require("../libs/ltps_accelerometer.node");
 
 var data = new lib.AccelData();
 var accel = new lib.Accelerometer();

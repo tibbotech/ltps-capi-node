@@ -1,4 +1,4 @@
-var lib = require("../libs/ltps_potentiometer");
+var lib = require("../libs/ltps_potentiometer.node");
 
 var potent = new lib.Potentiometer();
 

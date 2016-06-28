@@ -1,39 +1,37 @@
 #!/bin/sh
 
-if [ $# -lt 1 ]; then
-	echo "Usage $0 path_to_ltps_toolchain_environment"
-	exit 1;
-fi;
-
 cd ./adc
-./build.sh $1
+./build.sh
 
 cd ../dac
-./build.sh $1
+./build.sh
 
 cd ../pic
-./build.sh $1
+./build.sh
 
 cd ../light
-./build.sh $1
+./build.sh
 
 cd ../temperature
-./build.sh $1
+./build.sh
 
 cd ../humidity
-./build.sh $1
+./build.sh
 
 cd ../pressure
-./build.sh $1
+./build.sh
 
 cd ../accelerometer
-./build.sh $1
+./build.sh
 
 cd ../potentiometer
-./build.sh $1
+./build.sh
 
 cd ../portextender
-./build.sh $1
+./build.sh
 
 cd ../agpio
-./build.sh $1
+./build.sh
+
+cd ../i2c
+./build.sh

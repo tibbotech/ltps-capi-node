@@ -1,4 +1,4 @@
-var lib = require("../libs/ltps_portextender");
+var lib = require("../libs/ltps_portextender.node");
 
 var data = new lib.PortexData();
 var pext = new lib.Portextender();
