@@ -30,6 +30,9 @@ cd ../potentiometer
 cd ../portextender
 ./build.sh
 
+cd ../gpio
+./build.sh
+
 cd ../agpio
 ./build.sh
 
