@@ -8,7 +8,6 @@
 #include <linux/i2c-dev.h>
 
 #include <nan.h>
-#include <node.h>
 
 #include "drivers/ci2c_smbus.h"
 
