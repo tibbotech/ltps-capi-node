@@ -19,7 +19,7 @@ for (var i = 1; i < 4; i++) // Support by Tibbit's #16, #17 and #31
 		\param period PWM period is defined as the base frequency clock count (0, 4, 8...1023)
 		\param prescaler Prescaler affects the base frequency (the period is multiplied to the prescaler) (1, 4, 16 or 64)
    */
-   void startPwm(const char *socket, int channel, int pulse, int period, int prescaler);
+   // void startPwm(const char *socket, int channel, int pulse, int period, int prescaler);
 	pic.startPwm("s1", i, 100, i * 300, 1);
 	sleep.sleep(3);
 	

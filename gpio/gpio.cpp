@@ -61,6 +61,8 @@ const char* LtpsGpio::getDirection(const char *pin)
     }
     else
         Nan::ThrowError("GPIO PIN initialization error");
+
+    return "input";
 }
 
 void LtpsGpio::setValue(const char* pin, unsigned int value)
@@ -96,4 +98,6 @@ unsigned int LtpsGpio::getValue(const char *pin)
     }
     else
         Nan::ThrowError("GPIO PIN initialization error");
+
+    return 0;
 }

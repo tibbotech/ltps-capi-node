@@ -29,8 +29,11 @@ private:
     static NAN_METHOD(StartLoop);
     static NAN_METHOD(AddWatch);
     static NAN_METHOD(RemoveWatch);
+
     static Nan::Persistent<v8::Function> constructor;
 };
+
+Nan::Persistent<v8::Function> GpioAsync::constructor;
 
 struct gpio_event_data
 {
@@ -39,8 +42,6 @@ struct gpio_event_data
     std::string pin;
     int value;
 };
-
-Nan::Persistent<v8::Function> GpioAsync::constructor;
 
 NAN_MODULE_INIT(GpioAsync::Init)
 {
