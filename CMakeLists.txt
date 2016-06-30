@@ -2,13 +2,6 @@ cmake_minimum_required( VERSION 3.0 )
 
 find_package( SWIG 3.0.10 REQUIRED )
 
-find_file( Node NAMES node )
-if( Node )
-	message( STATUS "Found Node.js" )
-else()
-	message( FATAL_ERROR "Node.js not found" )
-endif()
-
 find_file( NodeGyp NAMES node-gyp )
 if( NodeGyp )
 	message( STATUS "Found node-gyp module" )
