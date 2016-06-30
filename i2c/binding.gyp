@@ -3,7 +3,7 @@
     {
 		"target_name": "ltps_i2c",
 
-		"sources": [ "./ltpsi2c.cpp",
+		"sources": [ "ltpsi2c.cpp",
 			"../../ltps-capi/src/drivers/ci2c.cpp",
 			"../../ltps-capi/src/drivers/ci2c_smbus.cpp" ],
 
