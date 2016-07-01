@@ -13,7 +13,7 @@
 
 #include "nan.h"
 
-#define PINS_INI_FILE       "/opt/tps-shared/hwini/pins.ini"
+CPin gpio;
 
 LtpsGpio::LtpsGpio()
 {
@@ -30,8 +30,7 @@ void LtpsGpio::setDirection(const char *pin, const char *direction)
     std::string spin(pin);
     std::transform(spin.begin(), spin.end(), spin.begin(), ::toupper);
 
-    CPin gpio;
-    if (!gpio.init(Lutils::readInteger(PINS_INI_FILE, "CPU", spin.c_str())))
+    if (!gpio.init(Lutils::getInstance().readInteger("CPU", spin.c_str())))
     {
         std::string sdirection(direction);
         std::transform(sdirection.begin(), sdirection.end(), sdirection.begin(), ::tolower);
@@ -50,8 +49,7 @@ const char* LtpsGpio::getDirection(const char *pin)
     std::string spin(pin);
     std::transform(spin.begin(), spin.end(), spin.begin(), ::toupper);
 
-    CPin gpio;
-    if (!gpio.init(Lutils::readInteger(PINS_INI_FILE, "CPU", spin.c_str())))
+    if (!gpio.init(Lutils::getInstance().readInteger("CPU", spin.c_str())))
     {
         int dir = gpio.dir_get();
         if (dir == PIN_DIR_I)
@@ -70,8 +68,7 @@ void LtpsGpio::setValue(const char* pin, unsigned int value)
     std::string spin(pin);
     std::transform(spin.begin(), spin.end(), spin.begin(), ::toupper);
 
-    CPin gpio;
-    if (!gpio.init(Lutils::readInteger(PINS_INI_FILE, "CPU", spin.c_str())))
+    if (!gpio.init(Lutils::getInstance().readInteger("CPU", spin.c_str())))
     {
         if (value == 0)
             gpio.W(0);
@@ -87,8 +84,7 @@ unsigned int LtpsGpio::getValue(const char *pin)
     std::string spin(pin);
     std::transform(spin.begin(), spin.end(), spin.begin(), ::toupper);
 
-    CPin gpio;
-    if (!gpio.init(Lutils::readInteger(PINS_INI_FILE, "CPU", spin.c_str())))
+    if (!gpio.init(Lutils::getInstance().readInteger("CPU", spin.c_str())))
     {
         int value = gpio.R();
         if (value == 0)

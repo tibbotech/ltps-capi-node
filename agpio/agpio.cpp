@@ -13,7 +13,7 @@
 #include "drivers/cpin.h"
 #include "lutils.h"
 
-#define PINS_INI_FILE       "/opt/tps-shared/hwini/pins.ini"
+CPin pin;
 
 class GpioAsync : public Nan::ObjectWrap
 {
@@ -96,8 +96,7 @@ void emit_event()
 {
     for (std::map<std::string, int>::iterator it = gpioMap.begin(); it != gpioMap.end(); it++)
     {
-        CPin pin;
-        if (!pin.init(Lutils::readInteger(PINS_INI_FILE, "CPU", it->first.c_str())))
+        if (!pin.init(Lutils::getInstance().readInteger("CPU", it->first.c_str())))
         {
             int value = pin.R();
 
@@ -158,8 +157,7 @@ NAN_METHOD(GpioAsync::AddWatch)
 
     v8::String::Utf8Value param(info[0]->ToString());
 
-    CPin pin;
-    if (!pin.init(Lutils::readInteger(PINS_INI_FILE, "CPU", std::string(*param).c_str())))
+    if (!pin.init(Lutils::getInstance().readInteger("CPU", std::string(*param).c_str())))
         gpioMap[std::string(*param)] = pin.R();
     else
     {
