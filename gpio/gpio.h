@@ -3,6 +3,9 @@
     \author Vitaly Gribko (vitaliy.gribko@tibbo.com)
 */
 
+#ifndef __GPIO_H__
+#define __GPIO_H__
+
 class LtpsGpio
 {
 public:
@@ -19,3 +22,5 @@ public:
 
     unsigned int getValue(const char *pin);
 };
+
+#endif
