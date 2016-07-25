@@ -3,15 +3,16 @@
     \author Vitaly Gribko (vitaliy.gribko@tibbo.com)
 */
 
-#include <string>
+#include <string.h>
+
 #include <algorithm>
+
+#include "nan.h"
 
 #include "drivers/cpin.h"
 #include "lutils.h"
 
 #include "gpio.h"
-
-#include "nan.h"
 
 CPin gpio;
 
@@ -27,15 +28,9 @@ LtpsGpio::~LtpsGpio()
 
 void LtpsGpio::setDirection(const char *pin, const char *direction)
 {
-    std::string spin(pin);
-    std::transform(spin.begin(), spin.end(), spin.begin(), ::toupper);
-
-    if (!gpio.init(Lutils::getInstance().readInteger("CPU", spin.c_str())))
+    if (!gpio.init(Lutils::getInstance().readInteger("CPU", pin)))
     {
-        std::string sdirection(direction);
-        std::transform(sdirection.begin(), sdirection.end(), sdirection.begin(), ::tolower);
-
-        if (sdirection.find("in") != std::string::npos)
+        if (strcmp(direction, "input") == 0)
             gpio.dir_set(PIN_DIR_I);
         else
             gpio.dir_set(PIN_DIR_O);
@@ -46,13 +41,9 @@ void LtpsGpio::setDirection(const char *pin, const char *direction)
 
 const char* LtpsGpio::getDirection(const char *pin)
 {
-    std::string spin(pin);
-    std::transform(spin.begin(), spin.end(), spin.begin(), ::toupper);
-
-    if (!gpio.init(Lutils::getInstance().readInteger("CPU", spin.c_str())))
+    if (!gpio.init(Lutils::getInstance().readInteger("CPU", pin)))
     {
-        int dir = gpio.dir_get();
-        if (dir == PIN_DIR_I)
+        if (gpio.dir_get() == PIN_DIR_I)
             return "input";
         else
             return "output";
@@ -65,10 +56,7 @@ const char* LtpsGpio::getDirection(const char *pin)
 
 void LtpsGpio::setValue(const char* pin, unsigned int value)
 {
-    std::string spin(pin);
-    std::transform(spin.begin(), spin.end(), spin.begin(), ::toupper);
-
-    if (!gpio.init(Lutils::getInstance().readInteger("CPU", spin.c_str())))
+    if (!gpio.init(Lutils::getInstance().readInteger("CPU", pin)))
     {
         if (value == 0)
             gpio.W(0);
@@ -81,13 +69,9 @@ void LtpsGpio::setValue(const char* pin, unsigned int value)
 
 unsigned int LtpsGpio::getValue(const char *pin)
 {
-    std::string spin(pin);
-    std::transform(spin.begin(), spin.end(), spin.begin(), ::toupper);
-
-    if (!gpio.init(Lutils::getInstance().readInteger("CPU", spin.c_str())))
+    if (!gpio.init(Lutils::getInstance().readInteger("CPU", pin)))
     {
-        int value = gpio.R();
-        if (value == 0)
+        if (gpio.R() == 0)
             return 0;
         else
             return 1;

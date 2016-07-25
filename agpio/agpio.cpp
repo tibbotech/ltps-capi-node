@@ -8,7 +8,7 @@
 
 #include <map>
 
-#include <nan.h>
+#include "nan.h"
 
 #include "drivers/cpin.h"
 #include "lutils.h"
