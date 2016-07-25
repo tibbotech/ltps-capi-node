@@ -8,7 +8,8 @@
 			"../../ltps-capi/src/lutils.cpp",
 			"../../ltps-capi/src/drivers/cpin.cpp" ],
 
-	  	"include_dirs": [ "<!(node -e \"require('nan')\")", 
+	  	"include_dirs": [ "<!(node -e \"require('nan')\")",
+		"../../ltps-capi/include/drivers",
 		"../../ltps-capi/include" ],
 
 		"cflags": [

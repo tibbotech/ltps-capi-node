@@ -4,10 +4,11 @@
 		"target_name": "ltps_i2c",
 
 		"sources": [ "ltpsi2c.cpp",
-			"../../ltps-capi/src/drivers/ci2c.cpp",
-			"../../ltps-capi/src/drivers/ci2c_smbus.cpp" ],
+			"../../ltps-capi/src/drivers/Ci2c.cpp",
+			"../../ltps-capi/src/drivers/Ci2c_smbus.cpp" ],
 
 	  	"include_dirs": [ "<!(node -e \"require('nan')\")",
+			"../../ltps-capi/include/drivers",
 			"../../ltps-capi/include" ],
 
 		"cflags": [

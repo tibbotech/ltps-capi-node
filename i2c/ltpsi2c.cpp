@@ -9,7 +9,7 @@
 
 #include <nan.h>
 
-#include "drivers/ci2c_smbus.h"
+#include "Ci2c_smbus.h"
 
 Ci2c_smbus i2c;
 
