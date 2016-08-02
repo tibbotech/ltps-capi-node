@@ -10,10 +10,7 @@
 
 #include "nan.h"
 
-#include "drivers/cpin.h"
 #include "lutils.h"
-
-CPin pin;
 
 class GpioAsync : public Nan::ObjectWrap
 {
@@ -96,9 +93,11 @@ void emit_event()
 {
     for (std::map<std::string, int>::iterator it = gpioMap.begin(); it != gpioMap.end(); it++)
     {
-        if (!pin.init(Lutils::getInstance().readInteger("CPU", it->first.c_str())))
+        CPin *cpin = Lutils::getInstance().getGpioPointer(it->first.c_str());
+
+        if (cpin)
         {
-            int value = pin.R();
+            int value = cpin->R();
 
             if (gpioMap.at(it->first) != value)
             {
@@ -157,8 +156,10 @@ NAN_METHOD(GpioAsync::AddWatch)
 
     v8::String::Utf8Value param(info[0]->ToString());
 
-    if (!pin.init(Lutils::getInstance().readInteger("CPU", std::string(*param).c_str())))
-        gpioMap[std::string(*param)] = pin.R();
+    CPin *cpin = Lutils::getInstance().getGpioPointer(*param);
+
+    if (cpin)
+        gpioMap[std::string(*param)] = cpin->R();
     else
     {
         std::string error = "Can't add watcher for pin " + std::string(*param);

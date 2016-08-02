@@ -4,6 +4,8 @@
 		"target_name": "ltps_i2c",
 
 		"sources": [ "ltpsi2c.cpp",
+			"../../ltps-capi/src/lutils.cpp",
+			"../../ltps-capi/src/drivers/cpin.cpp",
 			"../../ltps-capi/src/drivers/Ci2c.cpp",
 			"../../ltps-capi/src/drivers/Ci2c_smbus.cpp" ],
 

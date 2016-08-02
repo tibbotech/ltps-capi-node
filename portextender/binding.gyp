@@ -6,6 +6,7 @@
 		"sources": [ "portextender_wrap.cxx", 
 			"../../ltps-capi/src/tibbits/i2c/portextender.cpp",
 			"../../ltps-capi/src/lutils.cpp",
+			"../../ltps-capi/src/drivers/cpin.cpp",
 			"../../ltps-capi/src/drivers/Ci2c.cpp",
 			"../../ltps-capi/src/drivers/Ci2c_smbus.cpp" ],
 

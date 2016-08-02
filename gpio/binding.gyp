@@ -4,13 +4,14 @@
 		"target_name": "ltps_gpio",
 
 		"sources": [ "gpio_wrap.cxx", 
-			"gpio.cpp",
+			"../../ltps-capi/src/drivers/gpio.cpp",
 			"../../ltps-capi/src/lutils.cpp",
-			"../../ltps-capi/src/drivers/cpin.cpp" ],
+			"../../ltps-capi/src/drivers/cpin.cpp",
+			"../../ltps-capi/src/drivers/Ci2c.cpp",
+			"../../ltps-capi/src/drivers/Ci2c_smbus.cpp" ],
 
-	  	"include_dirs": [ "<!(node -e \"require('nan')\")",
-		"../../ltps-capi/include/drivers",
-		"../../ltps-capi/include" ],
+	  	"include_dirs": [ "../../ltps-capi/include",
+			"../../ltps-capi/include/drivers" ],
 
 		"cflags": [
         	"-fdata-sections",

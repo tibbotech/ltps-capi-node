@@ -4,14 +4,13 @@
 */
 
 #include <unistd.h>
+
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
 
 #include "nan.h"
 
 #include "Ci2c_smbus.h"
-
-Ci2c_smbus i2c;
 
 class LtpsI2C: public Nan::ObjectWrap
 {
@@ -112,6 +111,8 @@ NAN_METHOD(LtpsI2C::Read)
 
     if (info.Length() == 4)
     {
+        Ci2c_smbus i2c;
+
         if (i2c.set_bus(busn) != 1)
             return Nan::ThrowError("I2C set bus error");
 
@@ -178,6 +179,8 @@ NAN_METHOD(LtpsI2C::Write)
 
     if (info.Length() == 4)
     {
+        Ci2c_smbus i2c;
+
         if (i2c.set_bus(busn) != 1)
             return Nan::ThrowError("I2C set bus error");
 

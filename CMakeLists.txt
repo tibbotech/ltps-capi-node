@@ -51,7 +51,7 @@ add_custom_target ( dac
 	)
 
 add_custom_target ( gpio
-	COMMAND swig -c++ -javascript -node gpio.i
+	COMMAND swig -I../../ltps-capi/include/drivers -c++ -javascript -node gpio.i
 	COMMAND node-gyp clean configure build --arch=arm
 	COMMAND cp ./build/Release/ltps_gpio.node ../libs
 	COMMAND rm -fR ./build ./gpio_wrap.cxx
