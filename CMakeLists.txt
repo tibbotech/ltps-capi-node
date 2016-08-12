@@ -41,6 +41,14 @@ add_custom_target ( agpio
 	COMMENT "Building agpio module" VERBATIM
 	)
 
+add_custom_target ( awiegand
+	COMMAND node-gyp clean configure build --arch=arm
+	COMMAND cp ./build/Release/ltps_awiegand.node ../libs
+	COMMAND rm -fR ./build
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/awiegand
+	COMMENT "Building awiegand module" VERBATIM
+	)
+
 add_custom_target ( dac
 	COMMAND swig -I../../ltps-capi/include/tibbits/i2c -c++ -javascript -node dac.i
 	COMMAND node-gyp clean configure build --arch=arm
@@ -134,6 +142,7 @@ add_custom_target ( modules ALL DEPENDS
 	accelerometer
 	adc
 	agpio
+	awiegand
 	dac
 	gpio
 	humidity
