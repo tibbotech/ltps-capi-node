@@ -3,12 +3,12 @@
     \author Vitaly Gribko (vitaliy.gribko@tibbo.com)
 */
 
+#include <nan.h>
+
 #include <unistd.h>
 
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
-
-#include "nan.h"
 
 #include "Ci2c_smbus.h"
 

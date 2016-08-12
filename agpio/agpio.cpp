@@ -3,12 +3,12 @@
     \author Vitaly Gribko (vitaliy.gribko@tibbo.com)
 */
 
+#include <nan.h>
+
 #include <stdio.h>
 #include <unistd.h>
 
 #include <map>
-
-#include "nan.h"
 
 #include "lutils.h"
 
@@ -66,7 +66,9 @@ NAN_METHOD(GpioAsync::New)
 }
 
 GpioAsync* gpioAsyncThreadLoop;
+
 uv_thread_t gpioThread;
+
 int threadNum = 1;
 unsigned int pollPeriod = 25;
 
