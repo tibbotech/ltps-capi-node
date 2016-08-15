@@ -4,6 +4,7 @@
 */
 
 #include <nan.h>
+#include <v8.h>
 
 #include <stdio.h>
 #include <unistd.h>
@@ -11,6 +12,13 @@
 #include <map>
 
 #include "lutils.h"
+
+uv_thread_t gpioThread;
+
+int threadNum = 1;
+unsigned int pollPeriod = 25;
+
+std::map<std::string, int> gpioMap;
 
 class GpioAsync : public Nan::ObjectWrap
 {
@@ -36,6 +44,7 @@ struct gpio_event_data
 {
     uv_work_t request;
     std::string *event_name;
+
     std::string pin;
     int value;
 };
@@ -67,13 +76,6 @@ NAN_METHOD(GpioAsync::New)
 
 GpioAsync* gpioAsyncThreadLoop;
 
-uv_thread_t gpioThread;
-
-int threadNum = 1;
-unsigned int pollPeriod = 25;
-
-std::map<std::string, int> gpioMap;
-
 NAN_INLINE void noop_execute (uv_work_t* req)
 {
 
@@ -84,7 +86,9 @@ NAN_INLINE void callback_async_event (uv_work_t* req)
     Nan::HandleScope scope;
   
     gpio_event_data* data = static_cast<gpio_event_data*>(req->data);
-    v8::Local<v8::Value> emit_argv[] = { Nan::New("valueChangeEvent").ToLocalChecked(), Nan::New<v8::String>(data->pin).ToLocalChecked(), Nan::New<v8::Integer>(int(data->value)) };
+    v8::Local<v8::Value> emit_argv[] = { Nan::New("valueChangeEvent").ToLocalChecked(),
+                                         Nan::New<v8::String>(data->pin).ToLocalChecked(),
+                                         Nan::New<v8::Integer>(int(data->value)) };
 
     Nan::MakeCallback(gpioAsyncThreadLoop->handle(), "emit", 3, emit_argv);
 
@@ -111,7 +115,8 @@ void emit_event()
                 gpioEventdata->pin = it->first;
                 gpioEventdata->value = value;
 
-                uv_queue_work(uv_default_loop(), &gpioEventdata->request, noop_execute, reinterpret_cast<uv_after_work_cb>(callback_async_event));
+                uv_queue_work(uv_default_loop(), &gpioEventdata->request,
+                              noop_execute, reinterpret_cast<uv_after_work_cb>(callback_async_event));
             }
         }
     }

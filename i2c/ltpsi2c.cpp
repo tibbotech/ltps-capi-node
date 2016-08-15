@@ -4,6 +4,7 @@
 */
 
 #include <nan.h>
+#include <v8.h>
 
 #include <unistd.h>
 
