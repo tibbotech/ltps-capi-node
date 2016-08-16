@@ -99,7 +99,8 @@ void emit_event()
 {
     for (std::map<std::string, int>::iterator it = gpioMap.begin(); it != gpioMap.end(); it++)
     {
-        CPin *cpin = Lutils::getInstance().getGpioPointer(it->first.c_str());
+        char* error;
+        CPin *cpin = Lutils::getInstance().getGpioPointer(it->first.c_str(), &error);
 
         if (cpin)
         {
@@ -163,7 +164,8 @@ NAN_METHOD(GpioAsync::AddWatch)
 
     v8::String::Utf8Value param(info[0]->ToString());
 
-    CPin *cpin = Lutils::getInstance().getGpioPointer(*param);
+    char* error;
+    CPin *cpin = Lutils::getInstance().getGpioPointer(*param, &error);
 
     if (cpin)
         gpioMap[std::string(*param)] = cpin->R();

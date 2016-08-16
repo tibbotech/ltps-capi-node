@@ -1,8 +1,14 @@
 var lib = require("../libs/ltps_adc.node");
 
 var adc = new lib.Adc();
+var data = new lib.AdcData();
 
-console.log("Voltage for channel 1 = %d mV", adc.getVoltage("s1", 1)); // Get actual voltage value (2 reading cycles)
-console.log("Voltage for channel 2 = %d mV", adc.getVoltage("s1", 2)); // Get actual voltage value (2 reading cycles)
-console.log("Voltage for channel 3 = %d mV", adc.getVoltage("s1", 3, false)); // Get actual voltage value (2 reading cycles) (false is by default)
-console.log("Voltage for channel 4 = %d mV", adc.getVoltage("s1", 4, true)); // Get previous voltage conversion (1 reading cycle)
+for (var i = 1; i < 5; i++)
+{
+	adc.getVoltage("s1", i, false, data); // Set the third argument in the true to get previous voltage conversion (1 reading cycle)
+
+	if (data.status == 0)
+		console.log("Voltage for channel %d = %d mV", i, data.voltage);
+	else
+		console.log(data.error);
+}
