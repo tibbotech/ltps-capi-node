@@ -12,6 +12,7 @@
 #include <linux/i2c-dev.h>
 
 #include "Ci2c_smbus.h"
+#include "lutils.h"
 
 class LtpsI2C: public Nan::ObjectWrap
 {
@@ -25,6 +26,7 @@ private:
     static NAN_METHOD(New);
     static NAN_METHOD(Read);
     static NAN_METHOD(Write);
+    static NAN_METHOD(GetI2CBusNum);
 
     static Nan::Persistent<v8::Function> constructor;
 };
@@ -39,6 +41,7 @@ NAN_MODULE_INIT(LtpsI2C::Init)
 
     SetPrototypeMethod(tpl, "read", Read);
     SetPrototypeMethod(tpl, "write", Write);
+    SetPrototypeMethod(tpl, "getI2CBusNum", GetI2CBusNum);
 
     constructor.Reset(tpl->GetFunction());
     Nan::Set(target, Nan::New("LtpsI2C").ToLocalChecked(), tpl->GetFunction());
@@ -190,6 +193,18 @@ NAN_METHOD(LtpsI2C::Write)
         if (i2c.Wbb(addr, reg, (uint8_t*) data, byteCount) != byteCount)
             return Nan::ThrowError("I2C write error");
     }
+}
+
+NAN_METHOD(LtpsI2C::GetI2CBusNum)
+{
+    if(info.Length() != 1 || !info[0]->IsString())
+        return Nan::ThrowError("Argument must be a I2C socket name (eg: s1, s15)");
+
+    v8::String::Utf8Value param(info[0]->ToString());
+
+    int value = Lutils::getInstance().getI2CBusNum(*param);
+
+    info.GetReturnValue().Set(value);
 }
 
 NODE_MODULE(ltpsi2c, LtpsI2C::Init)

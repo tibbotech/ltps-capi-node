@@ -20,3 +20,6 @@ buf4 = i2c.read(4, 0x50, 2); // bus, address, buffer
 
 console.log(buf4[0]);
 console.log(buf4[1]);
+
+var busNum = i2c.getI2CBusNum("s1"); // Get bus number for socket
+console.log("Bus number for socket s1:", busNum);
