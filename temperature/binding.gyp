@@ -8,7 +8,8 @@
 			"../../ltps-capi/src/lutils.cpp",
 			"../../ltps-capi/src/drivers/cpin.cpp",
 			"../../ltps-capi/src/drivers/Ci2c.cpp",
-			"../../ltps-capi/src/drivers/Ci2c_smbus.cpp" ],
+			"../../ltps-capi/src/drivers/Ci2c_smbus.cpp",
+			"../../ltps-capi/src/drivers/Cspi.cpp" ],
 
 	  	"include_dirs": [ "../../ltps-capi/include",
 				"../../ltps-capi/include/drivers",
