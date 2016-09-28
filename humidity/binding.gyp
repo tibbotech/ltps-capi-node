@@ -13,7 +13,8 @@
 
 	  	"include_dirs": [ "../../ltps-capi/include",
 				"../../ltps-capi/include/drivers",
-	  			"../../ltps-capi/include/tibbits/i2c" ],
+	  			"../../ltps-capi/include/tibbits/i2c",
+				"../../ltps-capi/include/tibbits/spi" ],
 
 		"cflags": [
         	"-fdata-sections",

@@ -1,10 +1,10 @@
 {
 	"targets": [
     {
-		"target_name": "ltps_light",
+		"target_name": "ltps_rtc",
 
-		"sources": [ "light_wrap.cxx", 
-			"../../ltps-capi/src/tibbits/i2c/light.cpp",
+		"sources": [ "rtc_wrap.cxx", 
+			"../../ltps-capi/src/tibbits/spi/rtc.cpp",
 			"../../ltps-capi/src/lutils.cpp",
 			"../../ltps-capi/src/drivers/cpin.cpp",
 			"../../ltps-capi/src/drivers/Ci2c.cpp",

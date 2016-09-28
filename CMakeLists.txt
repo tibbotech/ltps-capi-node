@@ -129,6 +129,15 @@ add_custom_target ( pressure
 	COMMENT "Building pressure module" VERBATIM
 	)
 
+add_custom_target ( rtc
+	COMMAND swig -I../../ltps-capi/include/tibbits/spi -c++ -javascript -node rtc.i
+	COMMAND node-gyp clean configure build --arch=arm
+	COMMAND cp ./build/Release/ltps_rtc.node ../libs
+	COMMAND rm -fR ./build ./rtc_wrap.cxx
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/rtc
+	COMMENT "Building rtc module" VERBATIM
+	)
+
 add_custom_target ( temperature
 	COMMAND swig -I../../ltps-capi/include/tibbits/i2c -c++ -javascript -node temperature.i
 	COMMAND node-gyp clean configure build --arch=arm
@@ -152,5 +161,6 @@ add_custom_target ( modules ALL DEPENDS
 	portextender
 	potentiometer
 	pressure
+	rtc
 	temperature
 	)
