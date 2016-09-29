@@ -3,4 +3,5 @@
 #include "rtc.h"
 %}
 
+%include "stdint.i"
 %include "rtc.h"
