@@ -170,5 +170,6 @@ add_custom_target ( modules ALL DEPENDS
 	potentiometer
 	pressure
 	rtc
+	spi
 	temperature
 	)
