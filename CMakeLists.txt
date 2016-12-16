@@ -138,6 +138,14 @@ add_custom_target ( rtc
 	COMMENT "Building rtc module" VERBATIM
 	)
 
+add_custom_target ( spi
+	COMMAND node-gyp clean configure build --arch=arm
+	COMMAND cp ./build/Release/ltps_spi.node ../libs
+	COMMAND rm -fR ./build
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/spi
+	COMMENT "Building spi module" VERBATIM
+	)
+
 add_custom_target ( temperature
 	COMMAND swig -I../../ltps-capi/include/tibbits/i2c -c++ -javascript -node temperature.i
 	COMMAND node-gyp clean configure build --arch=arm
