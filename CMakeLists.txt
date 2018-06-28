@@ -42,6 +42,15 @@ add_custom_target ( adc420
 	COMMENT "Building adc 4...20 mA module" VERBATIM
 	)
 
+add_custom_target ( adc16
+	COMMAND swig -I../../ltps-capi/include/tibbits/i2c -c++ -javascript -node adc16.i
+	COMMAND node-gyp clean configure build --arch=arm
+	COMMAND cp ./build/Release/ltps_adc16.node ../libs
+	COMMAND rm -fR ./build ./adc16_wrap.cxx
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/adc16
+	COMMENT "Building adc 16bit module" VERBATIM
+	)
+
 add_custom_target ( agpio
 	COMMAND node-gyp clean configure build --arch=arm
 	COMMAND cp ./build/Release/ltps_agpio.node ../libs
@@ -167,6 +176,7 @@ add_custom_target ( temperature
 add_custom_target ( modules ALL DEPENDS 
 	accelerometer
 	adc
+	adc16
 	adc420
 	agpio
 	awiegand

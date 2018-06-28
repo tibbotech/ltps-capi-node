@@ -1,10 +1,10 @@
 {
 	"targets": [
 	{
-		"target_name": "ltps_adc420",
+		"target_name": "ltps_adc16",
 
-		"sources": [ "adc420_wrap.cxx", 
-			"../../ltps-capi/src/tibbits/i2c/adc-4-20.cpp",
+		"sources": [ "adc16_wrap.cxx", 
+			"../../ltps-capi/src/tibbits/i2c/adc-16bits.cpp",
 			"../../ltps-capi/src/lutils.cpp",
 			"../../ltps-capi/src/drivers/cpin.cpp",
 			"../../ltps-capi/src/drivers/Ci2c.cpp",
@@ -17,7 +17,7 @@
 				"../../ltps-capi/include/tibbits/spi" ],
 
 		"cflags": [
-			"-fdata-sections",
+		"-fdata-sections",
 			"-ffunction-sections",
 			"-feliminate-unused-debug-types",
 			"-fno-var-tracking-assignments" ],
