@@ -137,7 +137,7 @@ void emit_event()
                 sprintf(buff + i * 2, "%02X", result.buff[i]);
 
             if (result.blen % 8 != 0)
-                sprintf(buff + result.blen / 4 - 1, "%02X", result.buff[result.blen / 8]);
+                sprintf(buff + result.blen / 4, "%02X", result.buff[result.blen / 8]);
 
             wiegand_event_data *wiegandEventdata = new wiegand_event_data();
             wiegandEventdata->request.data = (void *) wiegandEventdata;
@@ -157,6 +157,8 @@ void emit_event()
 
                 output.append(bits.to_string());
             }
+            
+            output = output.substr(0, result.blen);
 
             wiegandEventdata->socket = it->first;
             wiegandEventdata->data = output;
